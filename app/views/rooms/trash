@@ -1,0 +1,13 @@
+
+            <div class="hidden">
+              <% if message.user_id == current_user.id %> 
+                <%= link_to edit_message_path do %>
+                  <i class="fa fa-pencil"></i>
+                <% end %>
+                <%= link_to room_path, method: :delete, data: {confirm: "Delete this message?"} do %>
+                  <i class="fa fa-bin"></i>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="fs">fjhjk</div>
+            <div class="hfs">jkfjhjk</div>

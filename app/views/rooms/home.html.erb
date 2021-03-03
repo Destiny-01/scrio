@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+    <%= render 'index' %>
+    <% else %>
+    <div class="container">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 bn mt-5">
+                <h4 class="text-center">Hi! Welcome To Scrio</h4>
+                This is a simple group chat room where you can create a room,
+                chat with people in the room, join a room,
+                but you don't have any privilege over the room. 
+                The room is not yours nor anyone's own. 
+                Anyone can join any room and you can chat with everyone. 
+                Wanna witness it?, What are you waiting for, join now and experience it.<br>
+                <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-success mt-3" %>
+                <%= link_to 'Log In', new_user_session_path, class: "btn btn-primary mt-3" %>
+                <%# <a href="/users/sign_in" class="btn btn-success mt-3">Log In</button>
+                <a href="/users/sign_up" class="btn btn-primary mt-3">Sign Up</button> %>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+<% end %>

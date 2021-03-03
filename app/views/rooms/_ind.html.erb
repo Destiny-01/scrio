@@ -1,0 +1,25 @@
+<div class="row mb-2 ">
+    <div class="col-3"></div>
+    <div class="col-3"></div>
+    <div class="col-3 btn btn-light">
+        <a href="/users/edit" ><%= current_user.username %></a> 
+    </div>
+    <div class="col-3 my">
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>
+    </div>
+</div>
+<div class="alert alert-primary">
+    <h4 class="alert-heading">
+    Hello <%= current_user.username %>!,
+    </h4>
+
+    <p>
+    We need to talk, Come Join The Conversation(which ever one you like).
+    </p>
+
+    <hr />
+
+    <p>
+    You can create or join a room from the sidebar. 
+    </p>
+</div>

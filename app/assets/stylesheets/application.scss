@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+$primary: #007bff;
+link {
+    color: $primary;;
+}
+
+ .chat-room {
+    height: 100vh;
+    overflow-y: scroll;
+    .message {
+        min-height: 59px;
+        .content-container {
+            display: inline-block;
+            // .content:hover {
+            //     background-color: #777;
+            // }
+            .content {
+                background-color: #eeeeee;
+                padding: 8px 16px;
+                border-radius: 20px;
+            }
+            .author {
+                font-size: 0.8rem;
+                color: #777;
+                margin-left: 10px;
+            }
+        }
+        &.me {
+            .content-container {
+                float: right;
+                .content {
+                    background-color: $primary;
+                    color: white;
+                    .hidden {
+                        display: none;
+                    }
+                }
+                // .content:hover + .hidden {
+                //     color: #777;
+                // }
+            }
+        }
+    }
+    .chat-box {
+        position: absolute;
+        bottom: 0;
+        padding: 20px;
+        width: calc(100% - 15px);
+        input[type=text] {
+            height: 45px;
+            font-size: 18px;
+            padding: 8px;
+        }
+        .btn {
+            height: 45px;
+        }
+    }
+ }
+ 
+ .um {
+     margin-right: 0px;
+     margin-top: 24px;
+ }
+
+ .im {
+     margin-top: 12px;
+     position: relative;
+ }
+ .yu:hover {
+     box-sizing: 23px;
+     background-color: $primary;
+     color: white;
+     box-shadow: $primary;
+ }
+
+ .nav-link {
+     position: relative;
+ }
+
+ .hfs {
+     display: none;
+ }
+ .fs:hover + .hfs {
+     background-color: #777;
+     display: block;
+ }
+
+ .bn {
+     display: block;
+     background: rgb(145, 245, 145);
+     padding-top: 24px;
+     padding-bottom: 24px;
+     width: 36em;
+ }
