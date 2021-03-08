@@ -1,17 +1,12 @@
-<div id="user-id" data-user-id="<%= message.user_id %>"></div>
+<div id="user-id" data-user-id="<%= message.user.id %>"></div>
 
 <div class="message mb-2 me">
     <div class="content-container">
         <div class="content">
-        <% if message.destroyed? %>
-            <p class="text-muted">This message was deleted</p>
-            <% else %>
             <%= message.content %>
-        <% end %>
         </div>
         <div class="author">
-        <%= @ud %>
-        <%#= message.user.username %>
+            <span class="activity-status online user-<%= message.user.id %>-status"><i class="fa fa-circle"></i></span><%= message.user.username %>
         </div>
     </div>
 </div>

@@ -18,20 +18,40 @@ link {
     color: $primary;;
 }
 
- .chat-room {
-    height: 100vh;
-    overflow-y: scroll;
+body {
+    overflow-y: hidden;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+}
+
+.chat-room {
+    height: 93vh;
+    padding-bottom: 40px;
+    #messages {
+        margin-top: 12px;
+        height: 100%;
+        overflow-y: scroll;  
+        padding-bottom: 40px;  
+    }
+
+    .navbar {
+        border-bottom: 1px solid #eee;
+        margin-left: -15px;
+        width: calc(100% + 30px);
+    }
     .message {
         min-height: 59px;
         .content-container {
             display: inline-block;
-            // .content:hover {
-            //     background-color: #777;
-            // }
             .content {
                 background-color: #eeeeee;
                 padding: 8px 16px;
                 border-radius: 20px;
+                .hidden {
+                    display: none;
+                }
             }
             .author {
                 font-size: 0.8rem;
@@ -45,13 +65,11 @@ link {
                 .content {
                     background-color: $primary;
                     color: white;
-                    .hidden {
-                        display: none;
-                    }
                 }
-                // .content:hover + .hidden {
-                //     color: #777;
-                // }
+                .content:hover {
+                    color: #777;
+                    border-radius: 28px;
+                }
             }
         }
     }
@@ -59,7 +77,10 @@ link {
         position: absolute;
         bottom: 0;
         padding: 20px;
-        width: calc(100% - 15px);
+        width: 100%;
+        margin-left: -15px;
+        background-color: #fff;
+        border-top: 1px solid #eeeeee;
         input[type=text] {
             height: 45px;
             font-size: 18px;
@@ -69,40 +90,73 @@ link {
             height: 45px;
         }
     }
- }
+}
  
- .um {
-     margin-right: 0px;
-     margin-top: 24px;
- }
+.yu:hover {
+    box-sizing: 23px;
+    background-color: $primary;
+    color: white;
+    box-shadow: $primary;
+}
 
- .im {
-     margin-top: 12px;
-     position: relative;
- }
- .yu:hover {
-     box-sizing: 23px;
-     background-color: $primary;
-     color: white;
-     box-shadow: $primary;
- }
+.bn {
+    display: block;
+    background: rgb(145, 245, 145);
+    padding-top: 24px;
+    padding-bottom: 24px;
+    width: 36em;
+}
 
- .nav-link {
-     position: relative;
- }
+.card.no-outline {
+    border: none;
+}
 
- .hfs {
-     display: none;
- }
- .fs:hover + .hfs {
-     background-color: #777;
-     display: block;
- }
+.room-link  {
+    text-decoration: none ;
+    &:hover {
+        text-decoration: none ;
+    }
+    .room-card {
+        transition: background-color 0.5s ease;
+        &:hover {
+            background-color: #eee;
+            border-radius: 20px;
+        }
+        &.active {
+            background-color: black;
+            border-radius: 20px;
+            .name {
+                color: white;
+            }
+            .member-count {
+                color: #c0c0c0;
+            }
+        }
+        .name {
+            font-weight: bold;
+            color: black;
+        }
+        .member-count {
+            color: #777777;
+            font-weight: lighter;
+        }
+    }
+}
 
- .bn {
-     display: block;
-     background: rgb(145, 245, 145);
-     padding-top: 24px;
-     padding-bottom: 24px;
-     width: 36em;
- }
+.room-side {
+    border-right: 1px solid #eeeeee;
+}
+
+.ng {
+    margin-right: 48px;
+    margin-left: 48px;
+}
+
+.activity-status {
+    float: left;
+    margin-right: 4px;
+    color: #c0c0c0;
+    &.online {
+        color: #64cc17;
+    }
+}

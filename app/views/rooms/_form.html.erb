@@ -12,12 +12,13 @@
     </div>
   <% end %>
 
-  <div class="field mb-2">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control", required: true %>
-  </div>
+  <h4 class="text-center"><b>Add a new room</b></h4>
 
-  <div class="actions">
-    <%= form.submit "Add Room", class:"btn btn-primary btn-block" %>
+  <div class="form-group mb-3">
+    <% form.label "Add a new room" %>
+    <%= form.text_field :name, class: "form-control", required: true, placeholder: "Room name" %>
+  </div>
+  <div class="d-grid gap-2">
+    <%= form.submit "Add Room", class:"btn btn-outline-primary btn-block" %>
   </div>
 <% end %>

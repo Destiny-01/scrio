@@ -1,13 +1,25 @@
-<div class="message mb-2 <%= 'me' if message.id == message.room.id %>">
-    <div class="content-container">
-        <div class="content">
-            <%= message.content %>
-        </div>
-        <div class="author">
-            <%= "vff" if @user.present? %>ggg
-            <%= @udi %>
-            <%#= current_user %>
-            <%#= message.user.username %>
+<div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
+
+<% if @ijk == message.user.id %>
+    <div class="message mb-2 me">
+        <div class="content-container">
+            <div class="content">
+                <%= message.content %>
+            </div>
+            <div class="author">
+                <span class="activity-status online user-<%= message.user.id %>-status"><i class="fa fa-circle"></i></span><%= message.user.username %>
+            </div>
         </div>
     </div>
-</div>
+    <% else %>
+    <div class="message mb-2">
+        <div class="content-container">
+            <div class="content">
+                <%= message.content %>
+            </div>
+            <div class="author">
+                <span class="activity-status user-<%= message.user.id %>-status"><i class="fa fa-circle"></i></span><%= message.user.username %>
+            </div>
+        </div>
+    </div>
+<% end %>

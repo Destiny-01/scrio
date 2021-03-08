@@ -7,9 +7,17 @@ class ApplicationController < ActionController::Base
   #   renderer.render(message)
   # end
 
+  attr_accessor :ith
+
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :ihj
 
   protected
+
+  def ihj
+    @ijk = current_user.id if user_signed_in?
+    @itm = current_user.username if user_signed_in?
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[email username])

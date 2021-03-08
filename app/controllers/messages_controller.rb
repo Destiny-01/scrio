@@ -23,8 +23,9 @@ class MessagesController < ApplicationController
   # POST /messages or /messages.json
   def create
     @message = Message.new(message_params)
-    # @message.id = current_user.id
+    @message.user = current_user
     @message.save
+    MessageJob.perform_later(@message)
     
     # MessageJob.perform_later(@message)
     # mine = ApplicationController.render(
@@ -40,7 +41,7 @@ class MessagesController < ApplicationController
     # )
 
     # ApplicationController.render_with_signed_in_user(
-    #   @user, 
+    #   @user,
     #   partial: 'messages/message',
     #   locals: { message: @message }
     # )
@@ -48,13 +49,13 @@ class MessagesController < ApplicationController
     #   partial: 'messages/yours',
     #   locals: { message: @message }
     # )
-    html = ApplicationController.render(
-     partial: 'messages/message',
-     locals: { message: @message }
-    )
+    # html = ApplicationController.render(
+    #  partial: 'messages/message',
+    #  locals: { message: @message }
+    # )
 
-    # # ActionCable.server.broadcast "room_channel_5", mine: mine, yours: yours, message: @message
-    ActionCable.server.broadcast "room_channel_5", html: html
+    # # # ActionCable.server.broadcast "room_channel_5", mine: mine, yours: yours, message: @message
+    # ActionCable.server.broadcast "room_channel_#{@message.room_id}", html: html
   end
 
   # PATCH/PUT /messages/1 or /messages/1.json
@@ -86,6 +87,7 @@ class MessagesController < ApplicationController
     end
 
     def se_message
+      @ith = "kogi"
       # @udi = current_user.id
       # @user = current_user
     end

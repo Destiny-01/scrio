@@ -11,3 +11,71 @@
             </div>
             <div class="fs">fjhjk</div>
             <div class="hfs">jkfjhjk</div>
+
+            import consumer from "./consumer"
+
+
+document.addEventListener('turbolinks:load', () => {
+  const room_element = document.getElementById('room-id');
+  const room_id = room_element.getAttribute('data-room-id');
+
+  console.log(consumer.subscriptions);
+
+  consumer.subscriptions.subscriptions.forEach((subscription) => {
+    consumer.subscriptions.remove(subscription)
+  })
+
+  consumer.subscriptions.create({ channel: "RoomChannel", room_id: room_id }, {
+    connected() {
+      console.log("connected to " + room_id);
+      // Called when the subscription is ready for use on the server
+    },
+
+    disconnected() {
+      // Called when the subscription has been terminated by the server
+    },
+
+    received(data) {
+
+      // const user_element = document.getElementById('user-id');
+      // const user_id = Number(user_element.getAttribute('data-user-id'));
+
+      // let html;
+
+      // if (user_id) {
+      //   html = data.mine
+      // } else {
+      //   html =  data.yours
+      // }
+      const messageContainer = document.getElementById('messages')
+      messageContainer.innerHTML = messageContainer.innerHTML + data.html
+    }
+  })
+});
+
+
+<% if @ijk == message.user_id %>
+    <div class="message mb-2 me">
+        <div class="content-container">
+            <div class="content">
+                <%= message.content %>
+            </div>
+            <div class="author">
+                0
+                <%= message.user.username %>
+            </div>
+        </div>
+    </div>
+    <% else %>
+    <div class="message mb-2">
+        <div class="content-container">
+            <div class="content">
+                <%= message.content %>
+            </div>
+            <div class="author">
+                1
+                <%= message.user.username %>
+            </div>
+        </div>
+    </div>
+<% end %>
