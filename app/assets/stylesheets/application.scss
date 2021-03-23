@@ -18,7 +18,25 @@ link {
     color: $primary;;
 }
 
+@media (max-width: 640px) {
+    .c {
+        display: none;
+    }
+    .ng {
+        margin-right: -48px !important;
+        margin-left: 16px !important;
+    }
+    
+    .chat-room {
+        height: 100% !important;
+        .message {
+            min-height: 59px !important;
+        }
+    }
+}
+
 body {
+    height: 100%;
     overflow-y: hidden;
     ::-webkit-scrollbar {
         display: none;
@@ -27,7 +45,7 @@ body {
 }
 
 .chat-room {
-    height: 93vh;
+    height: 92vh;
     padding-bottom: 40px;
     #messages {
         margin-top: 12px;
@@ -145,6 +163,10 @@ body {
 
 .room-side {
     border-right: 1px solid #eeeeee;
+    .rooms {
+        height: 50vh;
+        overflow-y: scroll;
+    }
 }
 
 .ng {

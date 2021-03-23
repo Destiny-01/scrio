@@ -1,0 +1,167 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+nav {
+    background: #1d2951;
+    line-height: 80px;
+    position: fixed;
+    width: 100%;
+}
+
+.data {
+    background: url(../../assets/images/bill-wegener-287873-unsplash.jpg);
+    height: 100vh;
+    margin-left: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+label {
+    line-height: 80px;
+    font-size: 30px;
+    color: white;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li {
+    line-height: 80px;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    font-style: 20px;
+    padding: 6px 15px;
+    font-weight: 600;
+    background-color: rgb(55, 34, 246);
+    border-radius: 3px;
+}
+
+nav ul li a:hover {
+    color: white;
+    background-color: rgb(49, 27, 214);
+    transition: 0.5s;
+}
+
+.side-menu {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background: #1d2951;
+    margin-top: 80px;
+}
+
+.side-menu center img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    margin-top: 30px;
+    border: 3px solid white;
+}
+
+.side-menu center h2 {
+    color: white;
+}
+
+.side-menu a {
+    display: block;
+    line-height: 60px;
+    transition: 0.5s;
+}
+
+.side-menu a:hover {
+    background: rgb(20, 54, 165);
+    padding-left: 20px;
+}
+
+.side-menu span {
+    font-size: 20px;
+    margin-left: 10px;
+    color: white;
+}
+
+.side-menu i {
+    font-size: 20px;
+    margin-left: 10px;
+    color: white;
+}
+
+nav .menu-bar {
+    float: right;
+    margin-top: 20px;
+    display: none;
+    margin-right: 20px;
+}
+
+#menu {
+    display: none;
+
+}
+
+.side-menu .logout {
+    display: none;
+}
+
+@media (max-width: 850px) {
+    .side-menu a span {
+        display: none;
+    }
+
+    .side-menu center {
+        display: none;
+    }
+
+    .side-menu {
+        width: 100%;
+    }
+
+    .data {
+        margin-left: 100px;
+    }
+}
+
+@media (max-width: 650px) {
+    .data {
+        display: none;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .side-menu {
+        width: 100%;
+        left: 0;
+        text-align: center;
+        background-color: #1d2951;
+        transition: all 0.5s;
+    }
+    
+    .side-menu a i {
+        display: none;
+    }
+
+    .side-menu a span {
+        display: block;
+    }
+
+    nav.menu-bar {
+        display: block;
+    }
+}
+
+#menu:checked  .side-menu {
+    left: 0;
+}

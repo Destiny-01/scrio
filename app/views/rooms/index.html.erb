@@ -1,36 +1,144 @@
+<%= javascript_pack_tag 'javascript' %>
+
 <p id="notice"><%= notice %></p>
+
 
 <div class="container-fluid">
   <div class="row">
+    
     <div class="col-3 room-side">
       <div class="card no-outline">
         <div class="card-body">
           <small>Logged In as</small><br>
-          <span class="name"><b> <%= current_user.username %></b></span><br>
+          <a class="name" href="/users/edit"><b> <%= current_user.username %></b></a>,
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger btn-sm ms-3" %>
         </div>
       </div>
       <hr>
       <%= render 'form', room: Room.new %>
       <hr>
+      
       <h3 class="text-center mt-1 mb-3">All Rooms</h3>
-      <% @rooms.each do |room| %>
-        <%= link_to room, class: "room-link" do %>
-          <% active_class = (@room == room) ? 'active' : '' %>
-          <div class="card no-outline mb-2 room-card <%= active_class %>">
-            <div class="card-body">
-              <span class="name"><%= room.name %></span><br>
-              <span class="member-count"><small><%= room.users.uniq.count %> Members</small></span>
+      <div class="rooms">
+        <% @rooms.each do |room| %>
+          <%= link_to room, class: "room-link", :'data-turbolinks' => false do %>
+            <% active_class = (@room == room) ? 'active' : '' %>
+            <div class="card no-outline mb-2 room-card <%= active_class %>">
+              <div class="card-body">
+                <span class="name"><%= room.name %></span><br>
+                <span class="member-count"><small><%= room.users.uniq.count %> Members</small></span>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-    <div class="col-9">
-      <% if @room.present? %>
-        <%= render 'show' %>
-      <% else %>
-        <%= render 'ind' %>
-      <% end %>
+        <div class="col-9">
+          <% if @room.present? %>
+            <%= render 'show' %>
+          <% else %>
+            <%= render 'ind' %>
+          <% end %>
+        </div>
+      </div>
+      </div>
+    <style>
+      .sidebar {
+    height: 100%;
+width: 0;
+position: fixed;
+top: 0;
+left: 0;
+background-color: #007bff;
+overflow-x: hidden;
+overflow-y: hidden;
+transition: 0.5s;
+padding-top: 60px;
+}
+@media (min-width: 640px) {
+  .sidebar {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .card {
+    /* display: none !important; */
+  }
+}
+
+.sidebar div {
+padding: 8px 8px 8px 30px;
+font-size: 24px;
+display: block;
+transition: 0.5s;
+cursor: pointer;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+top: 0;
+right: 25px;
+font-size: 36px;
+}
+
+.openbtn {
+  font-size: 24px;
+cursor: pointer;
+background-color: lightblue;
+}
+
+#main {
+  transition: margin-left .5s;
+}
+</style>
+</head>
+<body>
+
+<div id="mySidebar" class="sidebar">
+<div class="closebtn" onclick="closeNav()">×</div>
+<div class="co room-side">
+      <div class="card no-outline">
+        <div class="card-body">
+          <small>Logged In as</small><br>
+          <a class="name" href="/users/edit"><b> <%= current_user.username %></b></a>,
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger btn-sm ms-3" %>
+        </div>
+      </div>
+      <hr>
+      <%= render 'form', room: Room.new %>
+      <hr>
+      
+      <h3 class="text-center mt-1 mb-3">All Rooms</h3>
+      <div class="rooms">
+        <% @rooms.each do |room| %>
+          <%= link_to room, class: "room-link", :'data-turbolinks' => false do %>
+            <% active_class = (@room == room) ? 'active' : '' %>
+            <div class="card no-outline mb-2 room-card <%= active_class %>">
+              <div class="card-body">
+                <span class="name"><%= room.name %></span><br>
+                <span class="member-count"><small><%= room.users.uniq.count %> Members</small></span>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
 </div>
+</div>
+
+<div id="main">
+<button class="openbtn" onclick="openNav()"><i class="fa fa-bars"></i></button> 
+</div>
+
+<script>
+function openNav() {
+document.getElementById("mySidebar").style.width = "380px";
+document.getElementById("main").style.marginLeft = "380px";
+}
+
+function closeNav() {
+document.getElementById("mySidebar").style.width = "0";
+document.getElementById("main").style.marginLeft= "0";
+document.getElementById("main").style.color = "transparent";
+}
+</script>

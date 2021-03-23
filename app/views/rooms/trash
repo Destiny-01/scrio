@@ -79,3 +79,73 @@ document.addEventListener('turbolinks:load', () => {
         </div>
     </div>
 <% end %>
+
+
+<head>
+<style>
+/* @media screen and (m-width: 480px) { */
+
+  .sidebar {
+    height: 100%;
+width: 0;
+position: fixed;
+top: 0;
+left: 0;
+background-color: lightblue;
+overflow-x: hidden;
+transition: 0.5s;
+padding-top: 60px;
+}
+
+.sidebar div {
+padding: 8px 8px 8px 30px;
+font-size: 24px;
+display: block;
+transition: 0.5s;
+cursor: pointer;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+top: 0;
+right: 25px;
+font-size: 36px;
+}
+
+.openbtn {
+  font-size: 24px;
+cursor: pointer;
+background-color: lightblue;
+}
+
+#main {
+  transition: margin-left .5s;
+}
+  /* } */
+</style>
+</head>
+<body>
+
+<div id="mySidebar" class="sidebar">
+<div class="closebtn" onclick="closeNav()">×</div>
+<div>About</div>
+<div>Services</div>
+<div>Clients</div>
+</div>
+</div>
+
+<div id="main">
+<button class="openbtn" onclick="openNav()"><i class="fa fa-bars"></i></button> 
+</div>
+
+<script>
+function openNav() {
+document.getElementById("mySidebar").style.width = "250px";
+document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+document.getElementById("mySidebar").style.width = "0";
+document.getElementById("main").style.marginLeft= "0";
+}
+</script>

@@ -2,14 +2,10 @@
 <div class="message mb-2 ">
     <div class="content-container">
         <div class="content">
-        <%# if message.destroyed? %>
-            <%# <p class="text-muted">This message was deleted</p> %>
-            <%# else %>
-        <%# end %>
             <%= message.content %>
         </div>
         <div class="author">
-            <span class="activity-status user-<%= message.user.id %>-status"><i class="fa fa-circle"></i></span><%= message.user.username %>
+            <%= message.user.username %>
         </div>
     </div>
 </div>

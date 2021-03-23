@@ -1,3 +1,6 @@
+<%= javascript_pack_tag 'javascript' %>  
+
+
   <div id="room-id" data-room-id="<%= @room.id %>"></div>
   <div id="user-id" data-user-id="<%= current_user.id %>"></div>
   
@@ -7,12 +10,12 @@
       <span class="navbar-brand" href="#">
         <b><%= @room.name %> </b>
       </span>
-      <small><%= @room.users.uniq.count %> Members</small>
+      <small><%= @room.users.uniq.count %> Members, <div id="kin"><%= @val %></div> online</small>
     </div>
     </nav>
     <div id="messages">
       <% @room.messages.each do |message| %>
-        <%= render 'messages/message', message: message %>
+        <%= render 'messages/message', message: message %>  
       <% end %>   
     </div>
   </div>

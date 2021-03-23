@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   def ihj
     @ijk = current_user.id if user_signed_in?
     @itm = current_user.username if user_signed_in?
+    @val = 0
   end
 
   def configure_permitted_parameters

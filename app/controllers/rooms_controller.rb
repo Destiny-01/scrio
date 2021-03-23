@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
   before_action :se_room
 
   # GET /rooms or /rooms.json
-  def index
+  def home
     @rooms = Room.all
   end
 

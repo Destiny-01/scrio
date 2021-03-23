@@ -1,5 +1,5 @@
 <p class="notice"><%= notice %></p>
-    <div class="card "><h2 class="card-header text-center">Log In</h2>
+    <div class="card "><h2 class="card-header text-center">Sign Up</h2>
       <div class="card-body">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -12,7 +12,7 @@
 
   <div class="field form-group">
     <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username", class:"form-control" %>
+    <%= f.text_field :username, autofocus: true, autocomplete: "username", class:"form-control", required: true %>
   </div>
 
   <div class="field form-group">
@@ -26,12 +26,12 @@
   <div class="field form-group">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
-  </div>
+  </div><br>
 
   <div class="actions">
     <%= f.submit "Sign up", class: "btn btn-primary" %>
   </div>
 <% end %>
 </div>
-</div>
+</div><br>
 <%= render "devise/shared/links" %>

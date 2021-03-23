@@ -25,36 +25,17 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user = current_user
     @message.save
-    MessageJob.perform_later(@message)
-    
     # MessageJob.perform_later(@message)
-    # mine = ApplicationController.render(
-    #   partial: 'messages/mine',
-    #   locals: { message: @message }
-    # )
+    mine = ApplicationController.render(
+      partial: 'messages/mine',
+      locals: { message: @message }
+    )
+    yours = ApplicationController.render(
+      partial: 'messages/yours',
+      locals: { message: @message }
+    )
 
-    # user = current_user
-
-    # RoomChannel.broadcast_to(
-    #   "room_channel_5",
-    #   ApplicationController.render(partial: 'messages/message')
-    # )
-
-    # ApplicationController.render_with_signed_in_user(
-    #   @user,
-    #   partial: 'messages/message',
-    #   locals: { message: @message }
-    # )
-    # yours = ApplicationController.render(
-    #   partial: 'messages/yours',
-    #   locals: { message: @message }
-    # )
-    # html = ApplicationController.render(
-    #  partial: 'messages/message',
-    #  locals: { message: @message }
-    # )
-
-    # # # ActionCable.server.broadcast "room_channel_5", mine: mine, yours: yours, message: @message
+    ActionCable.server.broadcast "room_channel_5", mine: mine, yours: yours, message: @message
     # ActionCable.server.broadcast "room_channel_#{@message.room_id}", html: html
   end
 

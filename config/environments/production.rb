@@ -42,6 +42,8 @@ Rails.application.configure do
 
   config.cache_store = :redis_cache_store, { url: ENV.fetch("REDIS_URL", "redis://localhost:6379/1") }
 
+  config.action_cable.allowed_request_origins = ["https://scrio.herokuapp.com/"]
+
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   config.action_cable.url = 'wss://scrio.herokuapp.com/cable'

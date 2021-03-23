@@ -6,7 +6,8 @@
             <%= message.content %>
         </div>
         <div class="author">
-            <span class="activity-status online user-<%= message.user.id %>-status"><i class="fa fa-circle"></i></span><%= message.user.username %>
+            <span class="activity-status online user-= message.user_id-status"><i class="fa fa-circle"></i></span>
+            <%= message.user.username %>
         </div>
     </div>
 </div>

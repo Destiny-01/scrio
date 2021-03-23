@@ -11,12 +11,7 @@ class MessageJob < ApplicationJob
       partial: 'messages/yours',
       locals: { message: message }
     )
-    # html = ApplicationController.render(
-    #  partial: 'messages/message',
-    #  locals: { message: message }
-    # )
 
-    ActionCable.server.broadcast "room_channel_#{message.room_id}",
-    mine: mine, yours: yours, message: message
+    ActionCable.server.broadcast "room_channel_#{message.room_id}", mine: mine, yours: yours, message: message
   end
 end
